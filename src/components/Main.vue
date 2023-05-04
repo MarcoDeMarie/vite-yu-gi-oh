@@ -1,10 +1,17 @@
 <script>
 import Cards from './partials/Cards.vue'
+import { store } from '../data/store'
 export default {
   name: 'Main',
 
   components:{
     Cards,
+  },
+
+  data(){
+    return{
+      store
+    }
   }
 
 }
@@ -13,9 +20,17 @@ export default {
 <template>
   <main>
     <h3>SEARCH BAR</h3>
-    
-      <Cards />
-      
+
+    <div class="container">
+      <Cards 
+      v-for="card in store.cardsList"
+      :key="card.id"
+      :card="card"
+      />!
+    </div>
+    <br>
+    <br>
+    <br>
   </main>
 </template>
 
@@ -25,9 +40,15 @@ export default {
 
 main{
   background-color: $bg-brown;
-  height: 100vh;
-  width: 100vw;
 }
+.container{
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 100px 50px 20px 50px;
+}
+
 h3{
   height: 40px;
 }

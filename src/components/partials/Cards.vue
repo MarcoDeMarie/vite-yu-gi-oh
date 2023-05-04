@@ -1,53 +1,26 @@
 <script>
 export default {
-  name: 'Cards'
+  name: 'Cards',
+  props:{
+    card: Object
+
+  }
 
 }
 </script>
 
 <template>
-  <div class="container">
-    <div class="card">
-      <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-      <h3>"A" Cell Breeding Device</h3>
-      <p>Spell Card</p>
-    </div>
-    <div class="card">
-      <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-      <h3>"A" Cell Breeding Device</h3>
-      <p>Spell Card</p>
-    </div>
-    <div class="card">
-      <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-      <h3>"A" Cell Breeding Device</h3>
-      <p>Spell Card</p>
-    </div>
-    <div class="card">
-      <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-      <h3>"A" Cell Breeding Device</h3>
-      <p>Spell Card</p>
-    </div>
-    <div class="card">
-      <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-      <h3>"A" Cell Breeding Device</h3>
-      <p>Spell Card</p>
-    </div>
-    
-    
-    
+  <div class="card">
+    <img :src="card.card_images[0].image_url" :alt="card.name">
+    <h3>{{ card.name }}</h3>
+    <p>{{ card.type }}</p>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use '../../scss/partials/generals' as *;
 @use '../../scss/partials/variables' as *;
-.container{
-  background-color: white;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 100px 50px 20px 50px;
-}
+
 
 .card{
   margin-bottom: 10px;
