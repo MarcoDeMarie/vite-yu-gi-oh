@@ -10,6 +10,18 @@ export default {
   components:{
     Header,
     Main,
+  },
+  methods:{
+    getApi(){
+      axios.get(store.apiUrl)
+        .then(result => {
+          store.cardsList = result.data.data
+          console.log(store.cardsList);
+        })
+    }
+  },
+  mounted(){
+    this.getApi();
   }
 
 }
