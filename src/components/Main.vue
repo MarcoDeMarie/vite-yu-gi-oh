@@ -19,14 +19,18 @@ export default {
 
 <template>
   <main>
-    <h3>SEARCH BAR</h3>
+    <div class="reserch">
+      <input v-model.trim="store.cardSearch" type="text" placeholder="Cerca una carta">
+      <button @click="$emit('startSearch')" >Cerca</button>
+      <button @click="store.cardSearch=null; $emit('startSearch')">Reset</button>
+    </div>
 
     <div class="container">
       <Cards 
       v-for="card in store.cardsList"
       :key="card.id"
       :card="card"
-      />!
+      />
     </div>
     <br>
     <br>
@@ -46,11 +50,22 @@ main{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 100px 50px 20px 50px;
+  padding: 20px 50px 20px 50px;
 }
 
 h3{
   height: 40px;
+}
+
+.reserch{
+  display: flex;
+  justify-content: center;
+  padding: 15px 0 15px 0;
+  input{
+    height: 30px;
+    width: 200px;
+    margin-right: 10px;
+  }
 }
 
 

@@ -11,9 +11,20 @@ export default {
     Header,
     Main,
   },
+
+  data() {
+    return {
+      store
+    }
+  },
+  
   methods:{
     getApi(){
-      axios.get(store.apiUrl)
+      axios.get(store.apiUrl, {
+        params: {
+          name: store.cardSearch
+        }
+      })
         .then(result => {
           store.cardsList = result.data.data
           console.log(store.cardsList);
@@ -30,7 +41,7 @@ export default {
 <template>
   <Header />
 
-  <Main />
+  <Main @startSearch="getApi"/>
   
 </template>
 
